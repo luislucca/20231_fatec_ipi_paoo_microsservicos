@@ -16,10 +16,11 @@ app.post('/eventos', (req, res) => {
 
     //direcionando o evento para o mss de observacoes
     axios.post('http://localhost:5000/eventos', evento)
+    
+    //direcionando o evento para o mss de observacoes
+    axios.post('http://localhost:6000/eventos', evento)
 
     res.status(200).send({msg: 'ok'})
 })
 
-app.listen(BARRAMENTO_PORTA, () => {
-    console.log(`Barramento. Porta ${BARRAMENTO_PORTA}.`)
-})
+app.listen(BARRAMENTO_PORTA, () => console.log(`Barramento. Porta ${BARRAMENTO_PORTA}.`))

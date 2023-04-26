@@ -22,7 +22,7 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
     observacoesDoLembrete.push({id: idObs, texto})
     observacoesPorLembreteId[req.params.id] = observacoesDoLembrete
     await axios.post(
-        'https://localhost:10000',
+        'http://localhost:10000/eventos',
         {
             tipo: 'ObservacaoCriada',
             dados: {
@@ -34,11 +34,8 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
 })
 
 app.post('/eventos', (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     res.status(200).send({msg: 'ok'})
 })
 const { MSS_OBSERVACOES_PORTA } = process.env
-app.listen(
-    MSS_OBSERVACOES_PORTA,
-    () => console.log(`Observacoes. ${MSS_OBSERVACOES_PORTA}`)
-)
+app.listen(MSS_OBSERVACOES_PORTA, () => console.log(`Observacoes. ${MSS_OBSERVACOES_PORTA}`))

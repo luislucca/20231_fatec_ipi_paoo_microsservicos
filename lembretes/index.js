@@ -32,11 +32,9 @@ app.post('/lembretes', async (req, res) => {
 
 //GET localhost:4000/eventos
 app.post ('/eventos', (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     res.status(200).send({msg: '0k'})
 })
 
 const { MSS_LEMBRETES_PORTA } = process.env
-app.listen(MSS_LEMBRETES_PORTA, () => {
-    console.log(`Lembretes. Porta ${MSS_LEMBRETES_PORTA}.`)
-})
+app.listen(MSS_LEMBRETES_PORTA, () => console.log(`Lembretes. Porta ${MSS_LEMBRETES_PORTA}.`))
