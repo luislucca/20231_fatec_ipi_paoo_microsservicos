@@ -14,6 +14,7 @@ const funcoes = {
     }
 }
 
+//objeto que armazena os lembretes e observacoes para consultar
 const baseConsulta = {}
 
 //GET /lembretes

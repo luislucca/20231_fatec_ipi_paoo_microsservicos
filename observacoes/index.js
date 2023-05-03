@@ -5,11 +5,10 @@ const {v4: uuidv4} = require ('uuid')
 const app = express()
 app.use(express.json())
 
-
+//objeto que armazena as observacoes de cada lembrete
 const observacoesPorLembreteId = {}
 
 app.get('/lembretes/:id/observacoes', (req, res) => {
-    
     res.send(observacoesPorLembreteId[req.params.id] || [])
 })
 
@@ -19,14 +18,14 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
     //pegar o texto da observação
     const { texto } = req.body
     const observacoesDoLembrete = observacoesPorLembreteId[req.params.id] || []
-    observacoesDoLembrete.push({id: idObs, texto})
+    observacoesDoLembrete.push({id: idObs, texto, status: 'Aguardando'})
     observacoesPorLembreteId[req.params.id] = observacoesDoLembrete
     await axios.post(
         'http://localhost:10000/eventos',
         {
             tipo: 'ObservacaoCriada',
             dados: {
-                id: idObs, texto, lembreteId: req.params.id
+                id: idObs, texto, lembreteId: req.params.id, status: "Aguardando"
             }
         }
     )

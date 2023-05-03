@@ -4,7 +4,9 @@ const axios = require ('axios')
 const app = express()
 app.use(express.json())
 
+//objeto que armazena os lembretes
 const lembretes = {}
+
 let idAtual = 0
 //GET localhost:4000/lembretes
 app.get ('/lembretes', (req, res) => {
