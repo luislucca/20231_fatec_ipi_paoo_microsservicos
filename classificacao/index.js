@@ -22,9 +22,9 @@ const funcoes = {
 app.post('/eventos', (req, res) => {
     try{
         funcoes[req.body.tipo](req.body.dados)
-        res.sendStatus(200).send({msg: 'ok'})
     }
     catch (e){}
+    res.sendStatus(200).send({msg: 'ok'})
 })
 
 const { MSS_CLASSIFICACAO_PORTA } = process.env

@@ -34,8 +34,7 @@ app.post('/lembretes', async (req, res) => {
 
 //GET localhost:4000/eventos
 app.post ('/eventos', (req, res) => {
-    //console.log(req.body)
-    res.status(200).send({msg: '0k'})
+    res.status(200).send({msg: 'ok'})
 })
 
 const { MSS_LEMBRETES_PORTA } = process.env

@@ -9,7 +9,7 @@ const { BARRAMENTO_PORTA } = process.env
 app.post('/eventos', (req, res) => {
     // {tipo: LembreteCriado, payload: {id: 1, texto: "fazer café"}}
     const evento = req.body
-    console.log(evento)
+    // console.log(evento)
 
     //direcionando o evento para o mss de lembretes
     axios.post('http://localhost:4000/eventos', evento)
