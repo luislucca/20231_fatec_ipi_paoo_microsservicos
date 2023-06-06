@@ -22,7 +22,6 @@ const funcoes = {
         const observacoes = baseConsulta[observacao.lembreteId]['observacoes']
         const indice = observacoes.findIndex(o => o.id === observacao.id)
         observacoes[indice] = observacao
-        console.log(observacao)
     }
 }
 
