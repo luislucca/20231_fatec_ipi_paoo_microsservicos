@@ -13,15 +13,13 @@ const funcoes = {
         const observacoes = observacoesPorLembreteId[observacao.lembreteId]
         const obsParaAtualizar = observacoes.find(o => o.id === observacao.id)
         obsParaAtualizar.status = observacao.status
-        axios.post('http://localhost:10000/eventos'), {
-            tipo: 'ObservacaoAtualizada',
-            dados: {
-                id: observacao.id,
-                texto: observacao.texto,
-                lembreteId: observacao.lembreteId,
-                status: observacao.status
+        axios.post(
+            'http://localhost:10000/eventos',
+            {
+                tipo: 'ObservacaoAtualizada',
+                dados: observacao
             }
-        }
+        )
     }
 }
 
@@ -42,7 +40,10 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
         {
             tipo: 'ObservacaoCriada',
             dados: {
-                id: idObs, texto, lembreteId: req.params.id, status: "Aguardando"
+                id: idObs,
+                texto,
+                lembreteId: req.params.id,
+                status: "Aguardando"
             }
         }
     )
@@ -58,4 +59,4 @@ app.post('/eventos', (req, res) => {
 })
 
 const { MSS_OBSERVACOES_PORTA } = process.env
-app.listen(MSS_OBSERVACOES_PORTA, () => console.log(`Observacoes. ${MSS_OBSERVACOES_PORTA}`))
+app.listen(MSS_OBSERVACOES_PORTA, () => console.log(`Observacoes. Porta ${MSS_OBSERVACOES_PORTA}`))
