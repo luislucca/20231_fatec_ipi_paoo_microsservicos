@@ -20,11 +20,9 @@ app.post('/eventos', (req, res) => {
     
     // //direcionando o evento para o mss de classificacao
     axios.post('http://localhost:7000/eventos', evento)
-
-    if(evento.tipo === "LembreteCriado"){
-        //direcionando o evento para o mss de sentimento
-        axios.post('http://localhost:8000/eventos', evento)
-    }
+        
+    //direcionando o evento para o mss de sentimento
+    axios.post('http://localhost:8000/eventos', evento)
     
     res.status(200).send({msg: 'ok'})
 })

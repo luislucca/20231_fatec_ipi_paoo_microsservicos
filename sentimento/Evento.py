@@ -1,6 +1,8 @@
 from pydantic import BaseModel
-from DadosEvento import DadosEvento
+from DadosLembrete import DadosLembrete
+from DadosObservacao import DadosObservacao
+from typing import Union, Any
 
 class Evento(BaseModel):
     tipo: str
-    dados: DadosEvento
+    dados: Union[DadosLembrete, DadosObservacao, Any]

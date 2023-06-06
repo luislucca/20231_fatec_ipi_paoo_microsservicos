@@ -6,7 +6,7 @@ app.use(express.json())
 
 const palavraChave = 'importante'
 const funcoes = {
-    ObservacaoCriada: (observacao) => {
+    ObservacaoAnalisada: (observacao) => {
         observacao.status = observacao.texto.includes(palavraChave) ?
             'importante' : 'comum'
         axios.post(
@@ -17,7 +17,7 @@ const funcoes = {
             }
         )
     },
-    LembreteAnalizado: (lembrete) => {
+    LembreteAnalisado: (lembrete) => {
         lembrete.status = lembrete.texto.includes(palavraChave) ?
             'importante' : 'comum'
         axios.post(

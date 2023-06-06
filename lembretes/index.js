@@ -9,7 +9,7 @@ const lembretes = {}
 let idAtual = 0
 
 const funcoes = {
-    LembreteAnalisado: (lembrete) => {
+    LembreteClassificado: (lembrete) => {
         lembretes[lembrete.id].dados = lembrete
         axios.post(
             'http://localhost:10000/eventos',

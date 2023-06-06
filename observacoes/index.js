@@ -13,6 +13,7 @@ const funcoes = {
         const observacoes = observacoesPorLembreteId[observacao.lembreteId]
         const obsParaAtualizar = observacoes.find(o => o.id === observacao.id)
         obsParaAtualizar.status = observacao.status
+        obsParaAtualizar.sentimento = observacao.sentimento
         axios.post(
             'http://localhost:10000/eventos',
             {
@@ -33,7 +34,7 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
     //pegar o texto da observação
     const { texto } = req.body
     const observacoesDoLembrete = observacoesPorLembreteId[req.params.id] || []
-    observacoesDoLembrete.push({id: idObs, texto, status: 'Aguardando'})
+    observacoesDoLembrete.push({id: idObs, texto, status: 'Aguardando', sentimento: 'Aguardando'})
     observacoesPorLembreteId[req.params.id] = observacoesDoLembrete
     await axios.post(
         'http://localhost:10000/eventos',
@@ -43,7 +44,8 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
                 id: idObs,
                 texto,
                 lembreteId: req.params.id,
-                status: "Aguardando"
+                status: "Aguardando",
+                sentimento: "Aguardando"
             }
         }
     )
